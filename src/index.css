@@ -1,0 +1,11 @@
+/* Remove TipTap / ProseMirror default focus border */
+.ProseMirror {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Prevent focus ring */
+.ProseMirror-focused {
+  outline: none !important;
+}

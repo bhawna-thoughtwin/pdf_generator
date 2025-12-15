@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
@@ -27,14 +27,16 @@ const TextEditor: React.FC<TextEditorProps> = ({ value, onChange }) => {
       onChange(editor.getHTML());
     },
   });
-
+   useEffect(() => {
+    if (editor && value === "") {
+      editor.commands.clearContent();
+    }
+  }, [value, editor]);
   if (!editor) return null;
-
   const buttonStyle = (active: boolean) =>
     `p-2 rounded-lg border transition-all
     ${active ? "bg-blue-100 border-blue-400 text-blue-700" : "bg-white hover:bg-gray-100"}
   `;
-
   return (
     <div className="border rounded-xl shadow-sm">
       {/* Stylish Toolbar */}
@@ -98,10 +100,16 @@ const TextEditor: React.FC<TextEditorProps> = ({ value, onChange }) => {
       </div>
 
       {/* Editor Box */}
-      <EditorContent
-        editor={editor}
-        className="min-h-[150px] p-3 focus:outline-none"
-      />
+       <EditorContent
+      editor={editor}
+      className="
+        w-full min-h-[140px]
+        p-2
+        border border-gray-300
+        rounded
+        focus:outline-none
+      "
+    />
     </div>
   );
 };
