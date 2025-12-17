@@ -6,7 +6,6 @@ interface FormData {
     name: string;
     description: string;
     education: string;
-    
     imageBase64: string | null;
     fileName: string;
     imageType: ImageType;
@@ -163,32 +162,32 @@ const PdfGenerator: React.FC = () => {
                             Name
                         </label>
                         <input
-                            className="border p-2 w-full mb-2"
+                            className={`border p-2 w-full mb-1 ${errors.name ? "border-red-500" : ""}`}
                             placeholder=" Enter here your name"
                             value={formData.name}
                             onChange={handleChange("name")}
                         />
-                        {errors.name && <p className="text-red-500">{errors.name}</p>}
+                        {errors.name && <p className="text-red-500 text-sm mt">{errors.name}</p>}
                         <label className="block mb-1 text-sm text-gray-700">
                             Description
                         </label>
                         <input
-                            className="border p-2 w-full mb-2"
+                         className={`border p-2 w-full mb-1 ${errors.description ? "border-red-500" : ""}`}
                             placeholder="Enter here Description"
                             value={formData.description}
                             onChange={handleChange("description")}
                         />
-                        {errors.description && <p className="text-red-500">{errors.description}</p>}
+                        {errors.description && <p className="text-red-500 text-sm mt">{errors.description}</p>}
                         <label className="block mb-1 text-sm text-gray-700">
                             Education
                         </label>
                         <input
-                            className="border p-2 w-full mb-2"
+                             className={`border p-2 w-full mb-1 ${errors.education ? "border-red-500" : ""}`}
                             placeholder="Enter here Education"
                             value={formData.education}
                             onChange={handleChange("education")}
                         />
-                        {errors.education && <p className="text-red-500">{errors.education}</p>}
+                        {errors.education && <p className="text-red-500 text-sm mt">{errors.education}</p>}
                         <div className="mt-3">
                             <label className="block mb-1 text-sm text-gray-700">
                                 Choose Image

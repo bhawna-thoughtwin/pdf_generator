@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-
 // Icons
 import {
   Bold,
@@ -13,12 +12,10 @@ import {
   Undo,
   Redo,
 } from "lucide-react";
-
 interface TextEditorProps {
   value: string;
   onChange: (value: string) => void;
 }
-
 const TextEditor: React.FC<TextEditorProps> = ({ value, onChange }) => {
   const editor = useEditor({
     extensions: [StarterKit],
@@ -41,14 +38,12 @@ const TextEditor: React.FC<TextEditorProps> = ({ value, onChange }) => {
     <div className="border rounded-xl shadow-sm">
       {/* Stylish Toolbar */}
       <div className="flex gap-2 p-2 border-b bg-gray-50 rounded-t-xl">
-
         <button
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={buttonStyle(editor.isActive("bold"))}
         >
           <Bold size={18} />
         </button>
-
         <button
           onClick={() => editor.chain().focus().toggleItalic().run()}
           className={buttonStyle(editor.isActive("italic"))}
